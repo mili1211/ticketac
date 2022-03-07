@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Ticketac</title>
+</head>
+
+<body>
+    <%- include('navbar') %>
+
+        <div class="home">
+            
+            <% if(historicTravel.length> 0) {%>
+
+                <!-- Test title -->
+                <h3 class="homeTitle">My last trips : </h3>
+
+                <!-- Table resultField -->
+
+                <div class="tableDiv">
+                    <table class="table table-light ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Journey</th>
+                                <th scope="col">Departure time</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <% for(var i=0; i<historicTravel.length; i++){ %>
+
+                                <tr>
+                                    <td>
+                                        <%= dateFormat(historicTravel[i].date) %>
+                                    </td>
+                                    <td>
+                                        <%= historicTravel[i].departure %> / <%= historicTravel[i].arrival %>
+                                    </td>
+                                    <td>
+                                        <%= historicTravel[i].departureTime %> pm
+                                    </td>
+                                    <td>
+                                        <%= historicTravel[i].price %> €
+                                    </td>
+                                </tr>
+
+                                <% } %>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <% }else{ %>
+
+
+                    <h3 class="homeTitle">You haven't travelled with us yet! </h3>
+
+                    <% } %>
+
+                        <div style="margin-left:80%;">
+                            <a href="/home" class="btn btn-danger">Home</a>
+                        </div>
+
+
+
+                        <%- include('footer') %>
+        </div>
+
+</body>
+
+</html>
